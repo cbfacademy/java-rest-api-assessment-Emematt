@@ -20,11 +20,6 @@ public class UserService {
     private static final String FILE_PATH= "src/main/resources/users.json";
 
 
-
-//   1. readAll 2.<operation>   3.writeAll
-// Hw: Get, GetbyID & Delete
-    //HW: Google Markdown examples. Write about protocols.
-
     @Autowired
     ObjectMapper objectMapper;
 

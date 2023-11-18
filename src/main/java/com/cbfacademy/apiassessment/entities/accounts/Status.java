@@ -1,7 +1,7 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
-public enum Type {
+public enum Status {
 
-    CREDIT, DEBIT
+    Draft, Posted, Edited, Voided
 
 }

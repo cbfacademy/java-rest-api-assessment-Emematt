@@ -1,7 +1,7 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
-public enum Type {
+public enum Nature {
 
-    CREDIT, DEBIT
+    Income,Expense,Asset,Liability
 
 }
