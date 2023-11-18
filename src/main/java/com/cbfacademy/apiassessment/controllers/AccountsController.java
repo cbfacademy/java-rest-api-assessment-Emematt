@@ -1,64 +1,63 @@
-//package com.cbfacademy.apiassessment.controllers;
-//
-//
-//import com.cbfacademy.apiassessment.entities.user.User;
-//import com.cbfacademy.apiassessment.services.TransactionServiceImpl;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@RestController
-//@RequestMapping("/trialBalance")
-//public class AccountsController {
-//
-//    @Autowired
-//    private TransactionServiceImpl transactionService;
-//
-//
-//
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers(){
-//        List<User> users = this.userService.getAllUsers();
-//        return  new ResponseEntity<>(users, HttpStatus.OK);
-//    }
-//
-//
-//    @GetMapping("/getUserById/{userId}")
-//    public ResponseEntity<User> getUser(@PathVariable String userId){
-//        User user = this.userService.getUserById(userId);
-//        return new ResponseEntity<>(user,HttpStatus.OK);
-//    }
-//
-//
-//    @PostMapping("/addUser")
-//    public ResponseEntity<User> addUser(@RequestBody User user) {
-//        user = this.userService.createUser(user);
-//        return new ResponseEntity<>(user,HttpStatus.OK);
-//    }
-//
-//    @PostMapping("/updateUser/{userId}")
-//    public ResponseEntity<User> updateUser(@PathVariable Integer userId, @RequestBody User user)  {
-//        user = this.userService.updateUser(user);
-//        return new ResponseEntity<>(user,HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/deleteUserById/{userId}")
-//    public ResponseEntity<HttpStatus> deleteUser(@PathVariable String userId){
-//        this.userService.deleteUserById(userId);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/deleteAllUsers")
-//    public ResponseEntity<HttpStatus> deleteAllUsers(){
-//        this.userService.deleteAllUsers();
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//
-//
-//
-//
-//}
+package com.cbfacademy.apiassessment.controllers;
+
+
+import com.cbfacademy.apiassessment.entities.accounts.Account;
+import com.cbfacademy.apiassessment.services.AccountsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/trialBalance")
+public class AccountsController {
+
+    @Autowired
+    private AccountsService accountsService;
+
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Account>> getAllAccounts(){
+        List<Account> accounts = this.accountsService.getAllAccounts();
+        return  new ResponseEntity<>(accounts, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getAccountByNumber/{accountNumber}")
+    public ResponseEntity<Account> getAccount(@PathVariable String accountNumber){
+        Account account = this.accountsService.getAccountByNumber(accountNumber);
+        return new ResponseEntity<>(account,HttpStatus.OK);
+    }
+
+
+    @PostMapping("/addAccount")
+    public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+        account = this.accountsService.createAccount(account);
+        return new ResponseEntity<>(account,HttpStatus.OK);
+    }
+
+    @PostMapping("/updateAccount/{accountNumber}")
+    public ResponseEntity<Account> updateAccount(@PathVariable String accountNumber, @RequestBody Account account)  {
+        account = this.accountsService.updateAccount(account);
+        return new ResponseEntity<>(account,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deletAccountsById/{accountNumber}")
+    public ResponseEntity<HttpStatus> deleteAccount(@PathVariable String accountNumber){
+        this.accountsService.deleteAccountById(accountNumber);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteAllAccounts")
+    public ResponseEntity<HttpStatus> deleteAllAccounts(){
+        this.accountsService.deleteAllAccounts();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
+
+
+}

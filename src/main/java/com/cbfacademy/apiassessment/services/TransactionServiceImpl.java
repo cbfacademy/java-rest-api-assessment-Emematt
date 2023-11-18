@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class TransactionServiceImpl implements AccountsService{
+public class TransactionServiceImpl implements TransactionService{
 
-    private static final String FILE_PATH= "src/main/resources/accounts.json";
+    private static final String FILE_PATH= "src/main/resources/transactions.json";
 
 
     @Autowired
