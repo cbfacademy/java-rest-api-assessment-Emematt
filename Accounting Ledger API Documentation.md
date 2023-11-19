@@ -13,9 +13,9 @@
 
 ## Purpose
 The application is meant to record business transactions onto a ledger, with a JSON file taking the place of the ledger. 
-It is intended to allow the user to create accounts to group like transactions together and post transactions to those accounts. 
-At it's highest level it allows the user to aggregate these transactions to produce the balance on these accounts, this is commonly known as a trial balance in accounting. 
-Based on the nature of the account and whether the account is credit or debit, it indicates, income,asset, liability or expense. This information is used to prepare financial statements.
+It is intended to allow the user to create transactions to group like transactions together and post transactions to those transactions. 
+At it's highest level it allows the user to aggregate these transactions to produce the balance on these transactions, this is commonly known as a trial balance in accounting. 
+Based on the nature of the transaction and whether the transaction is credit or debit, it indicates, income,asset, liability or expense. This information is used to prepare financial statements.
 
 
 A more refined product would log the date,time and initiator of every transaction. It would also have more security functionalities.It would also have some safeguarding to reduce possibilities of duplicate transactions
@@ -52,14 +52,22 @@ An algorithm being a sequence of steps used to solve a problem.
 
 I tested my API endpoints by sending requests and testing its response to ensure the expected response body and status code are present. 
 
-# INCLUDE Code examples
-
+````
+@Test
+@Description("/User endpoint returns expected response for addUser")
+public void ExpectedResponseWithUserAdded() {
+User user = new User("1010101","Jennifer Lopez", Role.ReadOnly);
+ResponseEntity<User> response = userController.addUser(user);
+assertEquals(HttpStatus.OK, response.getStatusCode());
+assertEquals(user, response.getBody());
+}
+````
 
 #### <u>**3. Store the data in a JSON file**</u>
 
 **Location of files:** [path](src/main/resources) 
 
-I used the Jackson object mapper which is part of spring-boot-starter-json to write/read JSON to and from three main objects (users, transactions and accounts).
+I used the Jackson object mapper which is part of spring-boot-starter-json to write/read JSON to and from two main objects (users and transactions).
 I did this by instantiating the object mapper within methods in the service classes. The outgoing and incoming requests and responses in the controller are handled by these methods. 
 
 
@@ -76,14 +84,13 @@ Another is in my instantiations of arrays which  inherit from the Collection int
 #### <u>**5.Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported**</u>
 
 Using the User Controller Class for demonstrative purposes.
-# Complete endpoint examples
 
 | Post Man Methods | CRUD                                                                                                           | Endpoint Examples |
 |------------------|----------------------------------------------------------------------------------------------------------------|-------------------|
-| POST             | Properties file declares common properties in project                                                          |                   |
-| GET              | Objects which the CRUD Operations are performed on.                                                            |                   |
-| PUT              | Service interfaces and implementation of methods for file operations. Also contain error & exception handling. |                   |
-| DELETE           | House REST Controllers which accept request from clients and pass to relevant method for processing.           |                   |
+| POST             | Properties file declares common properties in project                                                          | http://localhost:8080/userController/addUser                  |
+| GET              | Objects which the CRUD Operations are performed on.                                                            | http://localhost:8080/userController/getUserById                  |
+| PUT              | Service interfaces and implementation of methods for file operations. Also contain error & exception handling. | http://localhost:8080/userController/updateUser                  |
+| DELETE           | House REST Controllers which accept request from clients and pass to relevant method for processing.           |  http://localhost:8080/userController/deleteUserById/                 |
 
 ##### Response & Request Formats  
 **Response**: JSON responses with appropriate status codes (e.g 200 OK, 500 Internal Error).  

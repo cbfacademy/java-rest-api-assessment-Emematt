@@ -4,6 +4,7 @@ package com.cbfacademy.apiassessment.services;
 import com.cbfacademy.apiassessment.entities.user.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@ApiModel(description = "User service houses CRUD operations for user objects")
+
 public class UserService {
 
     private static final String FILE_PATH= "src/main/resources/users.json";

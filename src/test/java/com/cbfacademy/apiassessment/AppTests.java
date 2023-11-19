@@ -8,21 +8,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URL;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppTests {
 
-	@LocalServerPort
-	private int port;
 
     @Autowired
     UserService userService;
@@ -30,10 +27,6 @@ class AppTests {
     @Autowired
     UserController controller;
 
-	private URL base;
-
-	@Autowired
-	private TestRestTemplate restTemplate;
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -51,4 +44,16 @@ class AppTests {
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals(user, response.getBody());
 	}
+
+	@Test
+	@Description("/User endpoint returns expected response for getUser")
+	public void ExpectedResponseWithUserRead() {
+
+		List<User> listofUsers = this.userService.readAllFromFile();
+		User user = new User("bcfb819f-49e7-4a1b-abe3-b76cd7c984fe","Emem Attah",Role.FinanceUser);
+		ResponseEntity<User> response = controller.getUser("bcfb819f-49e7-4a1b-abe3-b76cd7c984fe");
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(user, response.getBody());
+	}
+
 }

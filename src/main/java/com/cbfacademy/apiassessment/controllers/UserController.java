@@ -3,6 +3,7 @@ package com.cbfacademy.apiassessment.controllers;
 
 import com.cbfacademy.apiassessment.entities.user.User;
 import com.cbfacademy.apiassessment.services.UserService;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/userController")
+@ApiModel(description = "User controller is mediates requests for user objects")
 
 public class UserController {
 

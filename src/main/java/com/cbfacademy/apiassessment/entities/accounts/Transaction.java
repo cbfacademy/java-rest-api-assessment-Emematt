@@ -1,51 +1,29 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
-import com.cbfacademy.apiassessment.entities.user.User;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+
+
 import java.util.Objects;
 
+
+@ApiModel(description = "Account Class models object which categorises transactions and allows them to be aggregated by name")
 public class Transaction {
 
 
-    @JsonProperty("User")
-
-    private User user;
-
-    @JsonProperty("Amount")
-    private BigDecimal amount;
-
     @JsonProperty("TransactionId")
-
     private String transactionId;
 
-
-    @JsonProperty("Type")
-    private Type type;
-
+    @JsonProperty("AccountName")
+    private String accountName;
 
     @JsonProperty("Description")
     private String description;
 
-    @JsonProperty("Account")
-    private Account account;
+    @JsonProperty("Amount")
+    private double amount;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
 
     public String getTransactionId() {
         return transactionId;
@@ -55,14 +33,13 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public Type getType() {
-        return type;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
-
 
     public String getDescription() {
         return description;
@@ -72,28 +49,24 @@ public class Transaction {
         this.description = description;
     }
 
-
-
-    public Account getAccount() {
-        return account;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(amount, that.amount) && Objects.equals(transactionId, that.transactionId) && type == that.type && Objects.equals(description, that.description) && Objects.equals(account, that.account);
+        return Double.compare(amount, that.amount) == 0 && Objects.equals(transactionId, that.transactionId) && Objects.equals(accountName, that.accountName) && Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, transactionId, type, description, account);
+        return Objects.hash(transactionId, accountName, description, amount);
     }
 }
