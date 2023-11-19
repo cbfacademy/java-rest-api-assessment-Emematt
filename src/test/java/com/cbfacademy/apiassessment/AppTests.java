@@ -30,8 +30,8 @@ class AppTests {
 	}
 
 	@Test
-	@Description("/greeting endpoint returns expected response for default name")
-	public void greeting_ExpectedResponseWithDefaultName() {
+	@Description("/User endpoint returns expected response for User Id")
+	public void user_ExpectedResponseWithID() {
 		ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
 
 		assertEquals(200, response.getStatusCode().value());

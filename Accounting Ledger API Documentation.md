@@ -1,5 +1,7 @@
 # **Accounting Workbook API Project**
 
+![img_2.png](img_2.png)
+
 ## Table  of Contents
 
 * [General Info](#general-info)
