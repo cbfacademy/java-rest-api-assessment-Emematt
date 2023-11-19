@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.net.URL;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

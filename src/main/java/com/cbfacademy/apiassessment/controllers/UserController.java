@@ -4,6 +4,7 @@ package com.cbfacademy.apiassessment.controllers;
 import com.cbfacademy.apiassessment.entities.user.User;
 import com.cbfacademy.apiassessment.services.UserService;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +38,14 @@ public class UserController {
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Add user details", notes = "Adds new details")
 
     @PostMapping("/addUser")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         user = this.userService.createUser(user);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
-
+    @ApiOperation(value = "Update user details", notes = "Updates the details of an existing user")
     @PostMapping("/updateUser/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Integer userId, @RequestBody User user)  {
         user = this.userService.updateUser(user);

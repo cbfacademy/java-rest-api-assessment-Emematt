@@ -1,7 +1,6 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
 
-import com.cbfacademy.apiassessment.entities.user.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 

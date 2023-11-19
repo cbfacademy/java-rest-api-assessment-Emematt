@@ -4,6 +4,7 @@ package com.cbfacademy.apiassessment.controllers;
 import com.cbfacademy.apiassessment.entities.accounts.Transaction;
 import com.cbfacademy.apiassessment.services.TransactionService;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ public class TransactionController {
         return new ResponseEntity<>(transaction,HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Add transaction details", notes = "Adds new details for transaction")
 
     @PostMapping("/addTransaction")
     public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
