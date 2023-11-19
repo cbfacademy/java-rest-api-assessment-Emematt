@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/iDPpP-d0)
 # **Java API Assessment**
 
 ## **Introduction**
@@ -76,7 +77,7 @@ Before you begin, make sure you have the following installed:
    1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
    2. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
 
-Also make sure you have accounts for the following:
+Also make sure you have transactions for the following:
 
 1. [GitHub](https://github.com/signup)
 
@@ -179,7 +180,7 @@ Open your browser and navigate to `http://localhost:8080`.
 
 ## **Deliverables**
 
-Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into account.
+Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into transaction.
 
 ## FAQs
 
