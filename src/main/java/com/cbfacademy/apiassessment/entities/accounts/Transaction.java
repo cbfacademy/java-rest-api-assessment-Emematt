@@ -7,6 +7,14 @@ public class Transaction {
 
 
     private BigDecimal amount;
+    private String transactionId;
+
+    private Type type;
+
+    private Status status;
+    private String description;
+
+    private Account account;
 
     public BigDecimal getAmount() {
         return amount;
@@ -48,14 +56,7 @@ public class Transaction {
         this.description = description;
     }
 
-    private String transactionId;
 
-    private Type type;
-
-    private Status status;
-    private String description;
-
-    private Account account;
 
 
     public Account getAccount() {

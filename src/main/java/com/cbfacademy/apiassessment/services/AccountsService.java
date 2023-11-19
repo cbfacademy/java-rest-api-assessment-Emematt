@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment.services;
 
 
 import com.cbfacademy.apiassessment.entities.accounts.Account;
+import com.cbfacademy.apiassessment.entities.accounts.Type;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +22,9 @@ public class AccountsService{
 
     @Autowired
     ObjectMapper objectMapper;
+
+    @Autowired
+    TransactionServiceImpl transactionService;
 
     
     public Account createAccount(Account account) {
@@ -86,14 +91,25 @@ public class AccountsService{
             if (account.getAccountNumber().equals(accountNumber)){
                 return account;}
         }
-        throw new RuntimeException("No user found");
+        throw new RuntimeException("No accounts found");
     }
 
     
     public List<Account> getAllAccounts() {
         return this.readAllAccounts();
     }
-    
-    
+
+    public  BigDecimal getAccountBalanceByName(String accountName){
+
+        List<Account> listOfAccounts = readAllAccounts();
+
+        for (Account account: listOfAccounts) {
+            if (account.getAccountName().equals(accountName)){
+
+                return transactionService.sumDebitsInAccount(Type.DEBIT,accountName).subtract(transactionService.SumCreditsInAccount(Type.CREDIT,accountName));}
+        }
+        throw new RuntimeException("No account found");
+
+    }
     
 }
