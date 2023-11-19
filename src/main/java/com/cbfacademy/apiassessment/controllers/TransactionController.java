@@ -29,14 +29,14 @@ public class TransactionController {
 
 
     @GetMapping("/getTransactionById/{transactionId}")
-    public ResponseEntity<Transaction> getAccount(@PathVariable String transactionId){
+    public ResponseEntity<Transaction> getTransaction(@PathVariable String transactionId){
         Transaction transaction = this.transactionService.getTransactionByNumber(transactionId);
         return new ResponseEntity<>(transaction,HttpStatus.OK);
     }
 
 
     @PostMapping("/addTransaction")
-    public ResponseEntity<Transaction> addAccount(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
         transaction = this.transactionService.createAccountTransaction(transaction);
         return new ResponseEntity<>(transaction,HttpStatus.OK);
     }

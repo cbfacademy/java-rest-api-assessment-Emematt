@@ -1,6 +1,7 @@
 package com.cbfacademy.apiassessment.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -12,6 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 @Component
+@ApiModel(description = "User Class is object that handles user data.")
+
 public class User{
 
     private String userId;
@@ -21,29 +24,6 @@ public class User{
 
     @JsonProperty("Organisation Role")
     private Role role;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-
-
-    public User getUser(String name) {
-        this.name = name;
-        return this;
-    }
 
     @Override
     public boolean equals(Object o) {

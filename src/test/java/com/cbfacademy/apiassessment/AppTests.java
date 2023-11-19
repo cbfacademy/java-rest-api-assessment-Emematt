@@ -1,8 +1,11 @@
 package com.cbfacademy.apiassessment;
 
+import com.cbfacademy.apiassessment.controllers.TransactionController;
 import com.cbfacademy.apiassessment.controllers.UserController;
+import com.cbfacademy.apiassessment.entities.accounts.Transaction;
 import com.cbfacademy.apiassessment.entities.user.Role;
 import com.cbfacademy.apiassessment.entities.user.User;
+import com.cbfacademy.apiassessment.services.TransactionService;
 import com.cbfacademy.apiassessment.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +30,11 @@ class AppTests {
     @Autowired
     UserController controller;
 
+	@Autowired
+	TransactionController transactionController;
+	@Autowired
+	TransactionService transactionService;
+
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -39,7 +47,7 @@ class AppTests {
 	@Test
 	@Description("/User endpoint returns expected response for addUser")
 	public void ExpectedResponseWithUserSuccessfullyAdded() {
-        User user = new User("1010101","Jennifer Lopez", Role.ReadOnly);
+        User user = new User("1010101","John Doe", Role.ReadOnly);
 		ResponseEntity<User> response = controller.addUser(user);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals(user, response.getBody());
@@ -55,5 +63,6 @@ class AppTests {
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals(user, response.getBody());
 	}
+
 
 }

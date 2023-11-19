@@ -70,7 +70,6 @@ public class UserService {
         saveAllToFile(listOfUsers);
 
         return user;
-        //1. read all  2.operation ( loop, find , delete, add)  3. save
     }
 
     public void deleteAllUsers(){
@@ -87,8 +86,6 @@ public class UserService {
         List<User> listOfUsers = readAllFromFile();
         listOfUsers.remove(userToBeDeleted);
         this.saveAllToFile(listOfUsers);
-
-        //1. read all  2.operation ( loop, find , delete)  3. save
 
     }
 

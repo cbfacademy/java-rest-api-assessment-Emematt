@@ -1,6 +1,7 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
 
+import com.cbfacademy.apiassessment.entities.user.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 
@@ -25,6 +26,13 @@ public class Transaction {
     private double amount;
 
 
+    public void addTransaction(String transactionId, String accountName, String description,int amount) {
+        this.transactionId = transactionId;
+        this.accountName = accountName;
+        this.description = description;
+        this.amount = amount;
+    }
+
     public String getTransactionId() {
         return transactionId;
     }
@@ -33,29 +41,7 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public String getAccountName() {
-        return accountName;
-    }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 
     @Override
     public boolean equals(Object o) {
