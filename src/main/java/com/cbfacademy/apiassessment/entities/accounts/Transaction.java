@@ -1,20 +1,43 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
+import com.cbfacademy.apiassessment.entities.user.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Transaction {
 
 
+    @JsonProperty("User")
+
+    private User user;
+
+    @JsonProperty("Amount")
     private BigDecimal amount;
+
+    @JsonProperty("TransactionId")
+
     private String transactionId;
 
+
+    @JsonProperty("Type")
     private Type type;
 
-    private Status status;
+
+    @JsonProperty("Description")
     private String description;
 
+    @JsonProperty("Account")
     private Account account;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -40,13 +63,6 @@ public class Transaction {
         this.type = type;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     public String getDescription() {
         return description;
@@ -58,7 +74,6 @@ public class Transaction {
 
 
 
-
     public Account getAccount() {
         return account;
     }
@@ -67,16 +82,18 @@ public class Transaction {
         this.account = account;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(amount, that.amount) && Objects.equals(transactionId, that.transactionId) && type == that.type && status == that.status && Objects.equals(description, that.description) && Objects.equals(account, that.account);
+        return Objects.equals(amount, that.amount) && Objects.equals(transactionId, that.transactionId) && type == that.type && Objects.equals(description, that.description) && Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, transactionId, type, status, description, account);
+        return Objects.hash(amount, transactionId, type, description, account);
     }
 }

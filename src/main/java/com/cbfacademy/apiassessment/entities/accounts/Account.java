@@ -1,6 +1,7 @@
 package com.cbfacademy.apiassessment.entities.accounts;
 
 import com.cbfacademy.apiassessment.entities.user.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,15 +15,16 @@ import java.util.Objects;
 
 public class Account {
 
-
+    @JsonProperty("Amount")
     private BigDecimal totalAmount;
 
+    @JsonProperty("User")
+    private User user;
 
-    User user;
-
-
+    @JsonProperty("AccountNumber")
     private String accountNumber;
 
+    @JsonProperty("AccountName")
     private String accountName;
 
 
